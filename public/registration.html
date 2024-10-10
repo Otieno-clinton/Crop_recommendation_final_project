@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./registration.css">
+    <title>Registration</title>
+    <script defer src="./registration.js"></script>
+</head>
+<body>
+  <div class="form_container">
+    <form action="/registration" method="post"id="registration_form">
+      <div class="emptyerror" id="emptyerror" style="color: red;"></div>
+<label for="name"><i class="fa fa-user"></i> Full Name</label><br>
+<input type="text" id="username" name="username" placeholder="Input full name">
+<div class="error" id="error" style="color: red;"></div>
+<label for="name">Contact</label><br>
+<input type="number" id="contact" name="contact" placeholder="Input Phone number" oninput="validatePhone()">
+<div class="contacterror" id="contacterror"></div><br>
+<label for="name">Email</label><br>
+<input type="text" id="email" name="email" placeholder="Input Email"><br>
+<div class="berror" id="berror"></div>
+<label for="password">Password</label><br>
+<input type="password" id="password" name="password" placeholder="Create a password"><br>
+<label for="name">Confirm Password</label><br>
+<input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm password"><br>
+<div class="passworderror" id="passworderror" style="color: red;"></div>
+<button type="submit">Submit</button><br>
+Or<a href="login.html">Login</a>
+    </form>
+    
+  </div>
+   
+</body>
+</html>

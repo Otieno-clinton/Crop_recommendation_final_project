@@ -1,0 +1,60 @@
+.form_container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.form_container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form_container label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form_container input,
+.form_container select {
+    padding: 10px;
+    margin-bottom: 15px;
+    /* border: 2px solid #1206ef; */
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+input:focus {
+    outline-width: 2px;
+}
+.form_container button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form_container button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .form_container {
+        padding: 15px;
+    }
+
+    .form_container label,
+    .form_container input,
+    .form_container select,
+    .form_container button {
+        font-size: 14px;
+    }
+}
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./registration.css">
+    <title>Sign in</title>
+    <script defer src="./registration.js"></script>
+</head>
+<body>
+  <div class="form_container">
+    <form action="/login" method="post" id="login_form" onsubmit="login(event)">
+        <h1>Sign in to your account</h1>
+      <div class="emptyerror" id="login_emptyerror" style="color: red;"></div>
+
+<label for="name">Email</label><br>
+<input type="text" id="login_email" name="login_email" placeholder="Registered Email">
+<div class="login_emailerror" id="login_emailerror" style="color: red;"></div><br>
+<label for="password">Password</label><br>
+<input type="password" id="login_password" name="login_password" placeholder="Input password"><br>
+
+<div class="passworderror" id="login_passworderror" style="color: red;"></div>
+<button type="submit">Sign in</button>
+    </form>
+    
+  </div>
+   
+</body>
+</html>
