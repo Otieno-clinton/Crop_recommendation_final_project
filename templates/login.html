@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card" style="border-radius: 1rem;">
+          <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+
+                  <!-- Messages Section -->
+        {% if messages %}
+            <div id="message-container">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+                <form method="POST" action="{% url 'login' %}">
+                    {% csrf_token %}
+
+                  <div class="d-flex align-items-center mb-3 pb-1">
+{#                    <i class="fas fa-cubes fa-2x me-3" style="color: #30ff19;"></i>#}
+                    <img src="{% static 'assets/img/logo.png' %}" alt="">
+                  </div>
+
+                  <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="email" name="email" id="form2Example17" class="form-control form-control-lg" required>
+                    <label class="form-label" for="form2Example17">Email</label>
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <input type="password" name="password" id="form2Example27" class="form-control form-control-lg" required>
+                    <label class="form-label" for="form2Example27">Password</label>
+                  </div>
+
+                  <div class="pt-1 mb-4">
+                    <button data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg btn-block" type="submit">Login</button>
+                  </div>
+
+{#                  <a class="small text-muted" href="{% url 'forgotpassword' %}">Forgot password?</a>#}
+                    <!-- Trigger Button for Modal (This is where the user clicks to open the form) -->
+{#            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">#}
+{#                Forgot Password?#}
+{#            </button>#}
+{##}
+{#            <!-- Modal Structure for Password Reset -->#}
+{#            <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">#}
+{#                <div class="modal-dialog">#}
+{#                    <div class="modal-content">#}
+{#                        <div class="modal-header">#}
+{#                            <h5 class="modal-title" id="forgotPasswordModalLabel">Password Reset</h5>#}
+{#                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>#}
+{#                        </div>#}
+{#                        <div class="modal-body">#}
+{##}
+{#                            <!-- Display messages -->#}
+{#                            {% if messages %}#}
+{#                            <div class="alert alert-info">#}
+{#                                {% for message in messages %}#}
+{#                                    <p>{{ message }}</p>#}
+{#                                {% endfor %}#}
+{#                            </div>#}
+{#                            {% endif %}#}
+{##}
+{#                            <p class="card-text py-2">#}
+{#                                Enter your email address and we'll send you an email with instructions to reset your password.#}
+{#                            </p>#}
+{##}
+{#                            <form method="POST">#}
+{#                                {% csrf_token %}#}
+{#                                <div class="form-outline">#}
+{#                                    <input type="email" name="email" id="typeEmail" class="form-control my-3" required />#}
+{#                                    <label class="form-label" for="typeEmail">Email input</label>#}
+{#                                </div>#}
+{#                                <button type="submit" class="btn btn-success w-100">Reset password</button>#}
+{#                            </form>#}
+{##}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>#}
+                  <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="{% url 'farmer_register' %}"
+                      style="color: #393f81;">Register here</a></p>
+                  <a href="#!" class="small text-muted">Terms of use.</a>
+                  <a href="#!" class="small text-muted">Privacy policy</a>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+    // Auto-dismiss success and error messages after 4 seconds
+    setTimeout(function () {
+      const allMessages = document.querySelectorAll('.alert');
+      allMessages.forEach(function (message) {
+        message.style.display = 'none';  // Hide the message after 4 seconds
+      });
+
+      // If there are success messages, redirect after hiding
+      const successMessages = document.querySelectorAll('.alert-success');
+      if (successMessages.length > 0) {
+        window.location.href = "{% url 'login' %}";  // Redirect to the login page
+      }
+    }, 4000); // 4 seconds
+  </script>
+
+</body>
+</html>

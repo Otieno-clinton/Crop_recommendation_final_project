@@ -1,0 +1,103 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Dashboard</title>#}
+{#</head>#}
+{#<body>#}
+{#    <h1>Welcome to Your Dashboard</h1>#}
+{#    <p><strong>Name:</strong> {{ user_name }}</p>#}
+{#    <p><strong>Email:</strong> {{ user_email }}</p>#}
+{#    <p><strong>Location:</strong> {{ user_location }}</p>#}
+{##}
+{#    <a href="">Logout</a>#}
+{#</body>#}
+{#</html>#}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Farmer Dashboard - DigiAgric</title>
+    <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <!-- Reuse header code here -->
+    </header>
+
+    <main class="main">
+        <section class="dashboard-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Sidebar -->
+                        <div class="dashboard-sidebar">
+                            <h4>Farmer Dashboard</h4>
+                            <ul>
+                                <li><a href="#">My Profile</a></li>
+                                <li><a href="#">My Dashboard</a></li>
+                                <li><a href="#">Notifications</a></li>
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Log Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9">
+                        <!-- Farmer Dashboard Content -->
+                        <div class="dashboard-content">
+                            <h3>Welcome, Farmer!</h3>
+
+                            <!-- Profile Section -->
+                            <div class="profile-section">
+                                <div class="profile-image">
+                                    <!-- If user has an image, show it; otherwise, use Font Awesome icon -->
+                                    {% if user.profile_image %}
+                                        <img src="{{ user.profile_image.url }}" alt="Profile Image">
+                                    {% else %}
+                                        <i class="fas fa-user-circle fa-5x"></i>
+                                    {% endif %}
+                                </div>
+                                <div class="upload-image">
+                                    <form action="{% url 'upload_image' %}" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <input type="file" name="profile_image" accept="image/*">
+                                        <button type="submit">Upload Image</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <!-- Dashboard Cards (Farmer specific) -->
+                            <div class="dashboard-cards">
+                                <div class="card">
+                                    <h5>Crop Recommendations</h5>
+                                    <p>View your crop recommendations based on weather and soil conditions.</p>
+                                </div>
+                                <div class="card">
+                                    <h5>Farm Management</h5>
+                                    <p>Manage your farm activities and track progress.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Reuse footer code here -->
+    </footer>
+</body>
+
+</html>
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Registration - DigiAgric</title>
+  {% load static %}
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">Register as a Farmer</h2>
+    <p class="text-center">Join DigiAgric to get personalized crop recommendations and insights.</p>
+
+  <!-- Messages Section -->
+        {% if messages %}
+        <div id="message-container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+
+    <form method="post" action="{% url 'farmer_register' %}">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullName" name="full_name" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="location" class="form-label">Farm Location</label>
+        <input type="text" class="form-control" id="location" name="location" required>
+      </div>
+      <div class="mb-3">
+        <label for="soilType" class="form-label">Soil Type</label>
+        <input type="text" class="form-control" id="soilType" name="soil_type">
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="password" name="confirmpassword" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Register</button>
+    </form>
+  </div>
+
+    <script>
+    // Auto-dismiss success and error messages after 4 seconds
+    setTimeout(function () {
+      const allMessages = document.querySelectorAll('.alert');
+      allMessages.forEach(function (message) {
+        message.style.display = 'none';  // Hide the message after 4 seconds
+      });
+
+      // If there are success messages, redirect after hiding
+      const successMessages = document.querySelectorAll('.alert-success');
+      if (successMessages.length > 0) {
+        window.location.href = "{% url 'login' %}";  // Redirect to the login page
+      }
+    }, 4000); // 4 seconds
+  </script>
+
+</body>
+
+</html>

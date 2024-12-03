@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Agency Registration - DigiAgric</title>
+  {% load static %}
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center">Register as a Government Agency</h2>
+    <p class="text-center">Leverage DigiAgric to support policy-making and agricultural insights for your region.</p>
+
+  <!-- Messages Section -->
+        {% if messages %}
+        <div id="message-container">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+
+    <form method="post" action="{% url 'gov_register' %}">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="agencyName" class="form-label">Agency Name</label>
+        <input type="text" class="form-control" id="agencyName" name="agency_name" required>
+      </div>
+      <div class="mb-3">
+        <label for="contactPerson" class="form-label">Contact Person</label>
+        <input type="text" class="form-control" id="contactPerson" name="contact_person" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Official Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="region" class="form-label">Region of Operation</label>
+        <input type="text" class="form-control" id="region" name="region" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="password" name="confirmpassword" required>
+      </div>
+
+      <button type="submit" class="btn btn-success w-100">Register</button>
+    </form>
+  </div>
+
+  <script>
+    // Auto-dismiss success and error messages after 4 seconds
+    setTimeout(function () {
+      const allMessages = document.querySelectorAll('.alert');
+      allMessages.forEach(function (message) {
+        message.style.display = 'none';  // Hide the message after 4 seconds
+      });
+
+      // If there are success messages, redirect after hiding
+      const successMessages = document.querySelectorAll('.alert-success');
+      if (successMessages.length > 0) {
+        window.location.href = "{% url 'login' %}";  // Redirect to the login page
+      }
+    }, 4000); // 4 seconds
+  </script>
+
+</body>
+
+</html>

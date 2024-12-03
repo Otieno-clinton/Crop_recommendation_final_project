@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Homepage - DigiAgric</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+    {% load static %}
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Marcellus:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  </head>
+  <style>
+		h1 {
+			color: rgb(0, 0, 0);
+			text-align: center;
+		}
+
+		.warning {
+			color: red;
+			font-weight: bold;
+			text-align: center;
+		}
+		.card{
+		margin-left:410px;
+		margin-top: 20px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		color: rgb(241, 239, 240);
+		}
+		.container{
+		{#background:#fffbfe;#}
+		font-weight: bold;
+		padding-bottom:10px;
+		border-radius: 15px;
+		}
+
+		 .navmenu ul {
+      list-style: none;
+      display: flex;
+      padding-left: 0;
+      margin: 0;
+      gap: 15px;
+    }
+    .navmenu a {
+      text-decoration: none;
+      color: #000;
+      font-weight: bold;
+    }
+    .navmenu .nav-link:hover {
+      color: #28a745; /* Adjust hover color as desired */
+    }
+
+	</style>
+
+
+
+
+  <body style="background:#BCBBB8">
+  <header id="header" class="header d-flex align-items-center position-relative">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <img src="{% static 'assets/img/logo.png' %}" alt="AgriCulture">
+        <!-- <h1 class="sitename">AgriCulture</h1>  -->
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="{% url 'home' %}" class="active">Home</a></li>
+          <li><a href="{% url 'about' %}">About Us</a></li>
+          <li><a href="{% url 'services' %}">Our Services</a></li>
+          <li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+          <li><a href="{% url 'blog' %}">Blog</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+      <div class="container my-3 mt-3">
+      <h1 class="text-primary">Recommend with DigiAgric<span class="text-success"></span></h1>
+
+<!--      adding form-->
+      <form action="{% url 'recommend' %}" method="POST">
+
+          {% csrf_token %}
+
+          <div class="row">
+              <div class="col-md-4">
+					<label for="Nitrogen">Nitrogen</label>
+					<input type="number" id="Nitrogen" name="Nitrogen" placeholder="Enter Nitrogen" class="form-control" required step="0">
+				</div>
+               <div class="col-md-4">
+					<label for="Phosporus">Phosphorus</label>
+					<input type="number" id="Phosporus" name="Phosporus" placeholder="Enter amount of Phosphorus" class="form-control" required step="00">
+				</div>
+				<div class="col-md-4">
+					<label for="Potassium">Potassium</label>
+					<input type="number" id="Potassium" name="Potassium" placeholder="Enter Potassium" class="form-control" required step="0">
+				</div>
+          </div>
+
+          <div class="row mt-4">
+				<div class="col-md-4">
+					<label for="Temperature">Temperature</label>
+					<input type="number" step="0.01" id="Temperature" name="Temperature" placeholder="Enter Temperature in °C" class="form-control" required step="0">
+				</div>
+				<div class="col-md-4">
+					<label for="Humidity">Humidity</label>
+					<input type="number" step="0.01" id="Humidity" name="Humidity" placeholder="Enter Humidity in %" class="form-control" required step="0">
+				</div>
+				<div class="col-md-4">
+					<label for="pH">pH</label>
+					<input type="number" step="0.01" id="pH" name="pH" placeholder="Enter pH value" class="form-control" required step="0">
+				</div>
+			</div>
+
+          <div class="row mt-4">
+				<div class="col-md-4">
+					<label for="Rainfall">Rainfall</label>
+					<input type="number" step="0.01" id="Rainfall" name="Rainfall" placeholder="Enter Rainfall amount in mm" class="form-control" required>
+				</div>
+			</div>
+
+
+
+           <div class="row mt-4">
+
+           <div class="col-md-12 text-center">
+				<button type="submit" class="btn btn-success btn-lg">Get Recommendation</button>
+			</div>
+			</div>
+      </form>
+
+       {% if result %}
+		<div class="card bg-dark" style="width: 18rem;">
+		  <img src="{% static 'assets/img/crop.png' %}" style="width: 70px; height: 70px;" class="card-img-top" alt="...">
+		  <div class="card-body">
+			<h5 class="card-title">Recommendation:</h5>
+			<p class="card-text">{{ result }} </p>
+		  </div>
+		</div>
+	   {% endif %}
+  </div>
+
+  </main>
+
+  <footer id="footer" class="footer dark-background">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6 footer-about">
+            <a href="index.html" class="logo d-flex align-items-center">
+              <span class="sitename">DigiAgric</span>
+            </a>
+            <div class="footer-contact pt-3">
+              <p>Mombasa, Kenya</p>
+              <p class="mt-3"><strong>Phone:</strong> <span>+254 112 694 614</span></p>
+              <p><strong>Email:</strong> <span>clintonoluoch@gmail.com</span></p>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Services</a></li>
+              <li><a href="#">Terms of service</a></li>
+              <li><a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><a href="#">Web Design</a></li>
+              <li><a href="#">Web Development</a></li>
+              <li><a href="#">Product Management</a></li>
+              <li><a href="#">Marketing</a></li>
+              <li><a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+            <h4>Contact Us</h4>
+            <ul>
+              <li><a href="#">Customer Support</a></li>
+              <li><a href="#">Partnership Opportunities</a></li>
+              <li><a href="#">Feedback and Inquiries</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-3 footer-links">
+{#            <h4>Nobis illum</h4>#}
+{#            <ul>#}
+{#              <li><a href="#">Ipsam</a></li>#}
+{#              <li><a href="#">Laudantium dolorum</a></li>#}
+{#              <li><a href="#">Dinera</a></li>#}
+{#              <li><a href="#">Trodelas</a></li>#}
+{#              <li><a href="#">Flexo</a></li>#}
+{#            </ul>#}
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="copyright text-center">
+      <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+
+        <div class="d-flex flex-column align-items-center align-items-lg-start">
+          <div>
+            © Copyright <strong><span>DigiAgric</span></strong>. All Rights Reserved
+          </div>
+          <div class="credits">
+
+            Designed by <a href="https://otieno-clinton.github.io/">Clinton Oluoch</a>
+          </div>
+        </div>
+
+        <div class="social-links order-first order-lg-last mb-3 mb-lg-0">
+          <a href=""><i class="bi bi-twitter-x"></i></a>
+          <a href=""><i class="bi bi-facebook"></i></a>
+          <a href=""><i class="bi bi-instagram"></i></a>
+          <a href=""><i class="bi bi-linkedin"></i></a>
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+<!--==========================================================================================-->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+
+
+
+  </body>
+</html>
