@@ -1,11 +1,11 @@
 
-# 🌱 Crop Recommendation System
+#  Crop Recommendation System
 
 A web-based platform that leverages machine learning and real-time weather data to recommend optimal crops for smallholder farmers in Kenya. The system empowers farmers to make informed planting decisions based on soil and climatic conditions.
 
 ---
 
-## 📌 Table of Contents
+##  Table of Contents
 
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
@@ -14,8 +14,8 @@ A web-based platform that leverages machine learning and real-time weather data 
 - [Usage](#-usage)
 - [Machine Learning Model](#-machine-learning-model)
 - [Project Structure](#️-project-structure)
-- [Team](#-team)
-- [License](#-license)
+
+
 
 ---
 
@@ -51,13 +51,13 @@ A web-based platform that leverages machine learning and real-time weather data 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/crop-recommendation-system.git
-   cd crop-recommendation-system
+   git clone https://github.com/Otieno-clinton/Crop_recommendation_final_project.git
+   cd Croprecommend
    ```
 
 2. **Create and activate a virtual environment**
    ```bash
-   python -m venv venv
+   python -m venv myvenv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
@@ -139,9 +139,9 @@ A web-based platform that leverages machine learning and real-time weather data 
 ## 🤖 Machine Learning Model
 
 - **Input Features**: Nitrogen, Phosphorus, Potassium, pH, Temperature, Humidity, Rainfall
-- **Model Used**: [Random Forest / XGBoost — edit as needed]
-- **Accuracy**: XX% on test dataset
-- **Training Notebook**: Located in `ml_model/training.ipynb`
+- **Model Used**: Random Forest
+- **Accuracy**: 99% on test dataset
+
 
 ---
 
@@ -158,18 +158,3 @@ crop_recommendation_system/
 ├── requirements.txt
 └── README.md
 ```
-
----
-
-## 👥 Team
-
-- **Clinton Oluoch** – Project Manager
-- **Jared Odhiambo** – Front-End Developer
-- **Brian Omondi** – Machine Learning Engineer
-- **Abraham Senteu** – Community Support & Content Strategist
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
