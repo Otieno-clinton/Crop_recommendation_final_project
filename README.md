@@ -9,10 +9,11 @@ A web-based platform that leverages machine learning and real-time weather data 
 
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
+- [Prerequisites](#️-prerequisites)
 - [Installation](#-installation)
 - [Database Setup (MySQL via XAMPP)](#️-database-setup-mysql-via-xampp)
+- [ML Model Setup](#ml-model-setup)
 - [Usage](#-usage)
-- [Machine Learning Model](#-machine-learning-model)
 - [Project Structure](#️-project-structure)
 
 
@@ -44,6 +45,21 @@ A web-based platform that leverages machine learning and real-time weather data 
 
 **External APIs:**
 - Open-Meteo API (for real-time weather data)
+
+---
+
+## 🧰 Prerequisites
+
+Before setting up the project, ensure you have the following installed:
+
+- **Python 3.8+** – [Download Python](https://www.python.org/downloads/)
+- **pip** – Python package manager
+- **virtualenv** – For isolated development environment
+- **Git** – [Download Git](https://git-scm.com/downloads)
+- **XAMPP** – With MySQL enabled: [Download XAMPP](https://www.apachefriends.org/index.html)
+- **MySQL Client Library**
+  - `mysqlclient` or `pymysql` for Django support
+- **A code editor** – (VSCode, PyCharm, etc.)
 
 ---
 
@@ -126,6 +142,36 @@ A web-based platform that leverages machine learning and real-time weather data 
 
 ---
 
+## 🤖 ML Model Setup
+
+The core engine of this system is a **Random Forest Classifier** trained on historical crop data.
+
+### 📈 Model Information
+
+- **Algorithm**: Random Forest  
+- **Input Features**:
+  - Soil nutrients: `N`, `P`, `K`
+  - Soil pH  
+  - Climate: `Temperature`, `Humidity`, `Rainfall`  
+- **Performance**:
+  - Accuracy: ~99% on test set
+
+### 📂 ML Files
+
+- `Crop_recommendation.py`: Core script for prediction  
+- `model.pkl`: Serialized trained model  
+- `minmaxscaler.pkl`, `standardscaler.pkl`: Feature scaling tools  
+- `crop_rec_model.ipynb`: Notebook for training and evaluation
+
+### 🧠 ML Prediction Flow
+
+1. User inputs: soil & weather values  
+2. Scalers preprocess the data  
+3. Trained model predicts the optimal crop  
+4. Result shown in UI + optional explanation
+
+---
+
 ## 🧪 Usage
 
 - Register and log in as a specific user type.
@@ -136,25 +182,30 @@ A web-based platform that leverages machine learning and real-time weather data 
 
 ---
 
-## 🤖 Machine Learning Model
+CROPRECOMMEND/
+├── Croprecommend/
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── recommendapp/
+│   ├── __init__.py
+│   ├── admin.py
+│   ├── apps.py
+│   ├── crop_rec_model.ipynb
+│   ├── Crop_recommendation.py
+│   ├── forms.py
+│   ├── minmaxscaler.pkl
+│   ├── model.pkl
+│   ├── models.py
+│   ├── services.py
+│   ├── standardcaler.pkl
+│   ├── tests.py
+│   └── views.py
+├── static/
+├── templates/
+├── db.sqlite3
+└── manage.py
 
-- **Input Features**: Nitrogen, Phosphorus, Potassium, pH, Temperature, Humidity, Rainfall
-- **Model Used**: Random Forest
-- **Accuracy**: 99% on test dataset
-
-
----
-
-## 🗂️ Project Structure
-
-```
-crop_recommendation_system/
-├── core/               # Common logic and shared models
-├── farmers/            # Farmer-specific functionality
-├── ml_model/           # ML model and prediction scripts
-├── templates/          # HTML templates
-├── static/             # CSS, JS, images
-├── manage.py
-├── requirements.txt
-└── README.md
 ```
